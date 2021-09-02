@@ -1,10 +1,12 @@
 /**
+ * the start "button" (actually a link to the quiz page)
  * @type {HTMLDivElement}
  */
 let startButton = document.querySelector('.start-button');
 let [openTag, closeTag] = startButton.querySelectorAll('span');
 
 /**
+ * Dummy element that expands and shrinks the emulate a background animation
  * @type {HTMLDivElement}
  */
 let background = document.querySelector('.background');

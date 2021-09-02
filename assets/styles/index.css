@@ -8,20 +8,22 @@
 	flex-direction: row;
 	justify-self: center;
 	gap: 5px;
-}
-
-.start-button span {
-	color: dodgerblue;
-}
-
-.start-button a {
 	color: crimson;
 	text-decoration: none;
 	-webkit-transition: color 300ms;
 	transition: color 300ms;
+	cursor: pointer;
 }
 
-.start-button:hover a {
+.start-button span {
+	color: dodgerblue;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.start-button:hover {
 	color: dodgerblue;
 }
 
