@@ -1,42 +1,28 @@
 /**
- * @type {HTMLDivElement}
+ * The mount points for each JavJS-driven part of the UI
+ * @type {HTMLElement[]}
  */
-let root = document.querySelector('.wrapper');
-
-/**
- * @type {HTMLSpanElement}
- */
-let progressBar = document.querySelector('.progress-bar span');
-
-/**
- * @type {HTMLDivElement}
- */
-let progressMarkers = document.querySelector('.markers');
+let [root, progressBar, progressMarkers, timer] = [
+	document.querySelector('.wrapper'),
+	document.querySelector('.progress-bar span'),
+	document.querySelector('.markers'),
+	document.createElement('div')
+];
 
 let answered = 0;
-
 let answeredCorrectly = 0;
 
 /**
- * @typedef QuestionShape
- * @property {string} title - the actual question
- * @property {string} choiceA - choice with index 0
- * @property {string} choiceB - choice with index 1
- * @property {string} choiceC - choice with index 2
- * @property {string} choiceD - choice with index 3
- * @property {number} correct - the correct choice's index
+ * Generate the HTML for each question
+ * @param {{
+ * 	title: string,
+ * 	choices: string[],
+ * 	correct: number
+ * }} question - the question data, pulled from JSON down below
+ * @param {number} currentIndex - which question number we're at
+ * @param {number} numQuestions - the total number of questions in the quiz
  */
-
-/**
- * @param {QuestionShape} question
- * @param {number} currentIndex
- * @param {number} numQuestions
- */
-function Question(
-	{ title, choiceA, choiceB, choiceC, choiceD, correct },
-	currentIndex,
-	numQuestions
-) {
+function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	let question = document.createElement('div');
 	question.className = 'question';
 
@@ -46,20 +32,22 @@ function Question(
 
 	question.style.marginTop = margin;
 	question.style.marginLeft = margin;
-	question.style.zIndex = currentIndex.toString();
 
-	question.innerHTML = `<h2>${title}</h2>`;
+	question.innerHTML = `<h2></h2>`;
+	question.querySelector('h2').textContent = title;
 
-	[choiceA, choiceB, choiceC, choiceD].forEach((text, i) => {
-		let choice = document.createElement('button');
-		choice.className = 'choice';
-		choice.innerHTML = /*html*/ `
+	choices.forEach((choice, i) => {
+		let button = document.createElement('button');
+		button.className = 'choice';
+		button.innerHTML = /*html*/ `
 			<div>
-				<span>${text}</span>
+				<span></span>
 			</div>
 		`;
 
-		choice.addEventListener('click', () => {
+		button.querySelector('span').textContent = choice;
+
+		button.addEventListener('click', () => {
 			const wasCorrect = i === correct;
 
 			if (wasCorrect) answeredCorrectly++;
@@ -103,7 +91,7 @@ function Question(
 			}
 		});
 
-		question.appendChild(choice);
+		question.appendChild(button);
 	});
 
 	return question;

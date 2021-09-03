@@ -26,7 +26,7 @@ main .wrapper {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 60%;
+	width: 70%;
 	height: 65%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
@@ -39,8 +39,8 @@ main .wrapper {
 	flex-direction: column;
 	grid-gap: 10px;
 	gap: 10px;
-	padding: 40px;
-	padding-top: 20px;
+	padding: 30px;
+	padding-top: 22px;
 	border-radius: 12px;
 	-webkit-filter: grayscale(0);
 	filter: grayscale(0);
@@ -55,7 +55,7 @@ main .wrapper {
 	background-color: #ffe9bd;
 }
 .question h2 {
-	font-size: 42px;
+	font-size: 32px;
 }
 .question.answered {
 	-webkit-filter: grayscale(50%);
@@ -71,7 +71,8 @@ main .wrapper {
 	width: -moz-fit-content;
 	width: fit-content;
 	overflow: hidden;
-	font-size: 30px;
+	text-align: left;
+	font-size: 22px;
 	border-radius: 7px;
 	min-width: 4em;
 	border: none;
