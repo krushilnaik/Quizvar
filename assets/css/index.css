@@ -7,14 +7,15 @@
 	-ms-flex-direction: row;
 	flex-direction: row;
 	justify-self: center;
+	grid-gap: 5px;
 	gap: 5px;
 	color: crimson;
 	text-decoration: none;
 	-webkit-transition: color 300ms;
 	transition: color 300ms;
 	cursor: pointer;
+	font-weight: bold;
 }
-
 .start-button span {
 	color: dodgerblue;
 	-webkit-user-select: none;
@@ -22,7 +23,6 @@
 	-ms-user-select: none;
 	user-select: none;
 }
-
 .start-button:hover {
 	color: dodgerblue;
 }
@@ -41,12 +41,8 @@
 }
 
 body {
-	row-gap: 5px;
 	background-color: blanchedalmond;
-	font-size: 5vmin;
-	font-weight: bold;
 }
-
 body h1 {
 	color: dodgerblue;
 }

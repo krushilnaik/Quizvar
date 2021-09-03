@@ -7,9 +7,9 @@
 		<meta name="description" content="A JavaScript quiz with a leaderboard" />
 		<meta name="keywords" content="javascript,quiz" />
 
-		<link rel="stylesheet" href="assets/styles/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 
-		<link rel="stylesheet" href="assets/styles/index.css" />
+		<link rel="stylesheet" href="assets/css/index.css" />
 
 		<title>QuizVar | Home</title>
 	</head>
@@ -18,13 +18,21 @@
 
 		<span class="background"></span>
 
-		<h1>Quiz<span style="color: crimson">var</span></h1>
+		<header>
+			<a href="leaderboard.html">View high scores</a>
+		</header>
 
-		<a href="quiz.html" class="start-button">
-			<span style="opacity: 0; transform: translateX(-50%)" class="left">&lt;</span>
-			start
-			<span style="opacity: 0; transform: translateX(50%)" class="right">/&gt;</span>
-		</a>
+		<main>
+			<h1>Quiz<span style="color: crimson">var</span></h1>
+
+			<a href="quiz.html" class="start-button" role="button">
+				<span style="opacity: 0; transform: translateX(-50%)" class="left">&lt;</span>
+				start
+				<span style="opacity: 0; transform: translateX(50%)" class="right">
+					/&gt;
+				</span>
+			</a>
+		</main>
 
 		<script src="assets/js/index.js"></script>
 	</body>
