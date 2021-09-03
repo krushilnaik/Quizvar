@@ -44,5 +44,32 @@ body {
 	background-color: blanchedalmond;
 }
 body h1 {
+	opacity: 0;
 	color: dodgerblue;
+	-webkit-animation: fadeIn 1s forwards;
+	animation: fadeIn 1s forwards;
+}
+body h1 span {
+	opacity: 0;
+	-webkit-animation: fadeIn 1s forwards;
+	animation: fadeIn 1s forwards;
+	-webkit-animation-delay: 650ms;
+	animation-delay: 650ms;
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

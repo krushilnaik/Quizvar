@@ -1,5 +1,5 @@
 :root {
-	--backgroundColor: #f5aeae;
+	--backgroundColor: #e7a3a3;
 }
 
 * {
@@ -11,7 +11,7 @@
 }
 
 body {
-	background-color: #f5aeae;
+	background-color: #e7a3a3;
 	background-color: var(--backgroundColor);
 	display: grid;
 	font-size: 5vmin;
