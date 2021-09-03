@@ -1,0 +1,34 @@
+[
+	{
+		"title": "This is a question",
+		"choiceA": "This is the first choice",
+		"choiceB": "Choice 2",
+		"choiceC": "C",
+		"choiceD": "None of the above",
+		"correct": 2
+	},
+	{
+		"title": "This is another question",
+		"choiceA": "More choice",
+		"choiceB": "Very quiz",
+		"choiceC": "This isn't the answer",
+		"choiceD": "Yes",
+		"correct": 3
+	},
+	{
+		"title": "Question numero three",
+		"choiceA": "one",
+		"choiceB": "dos",
+		"choiceC": "drei",
+		"choiceD": "yon",
+		"correct": 0
+	},
+	{
+		"title": "Final question",
+		"choiceA": "Yes",
+		"choiceB": "No",
+		"choiceC": "Maybe",
+		"choiceD": "How is this multiple choice",
+		"correct": 1
+	}
+]

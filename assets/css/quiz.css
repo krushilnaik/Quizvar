@@ -1,4 +1,35 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap");
+main {
+	width: 75%;
+	grid-template-rows: 50px 1fr;
+	-ms-flex-line-pack: unset;
+	align-content: unset;
+	-webkit-box-pack: unset;
+	-ms-flex-pack: unset;
+	justify-content: unset;
+	overflow: hidden;
+}
+main .wrapper {
+	position: relative;
+	display: grid;
+	width: 100%;
+	height: 90%;
+	margin-top: 0;
+	top: 0;
+	left: 0;
+	-webkit-transition: left 350ms, top 350ms;
+	transition: left 350ms, top 350ms;
+}
+
 .question {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 60%;
+	height: 65%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -8,9 +39,31 @@
 	flex-direction: column;
 	grid-gap: 10px;
 	gap: 10px;
+	padding: 40px;
+	padding-top: 20px;
+	border-radius: 12px;
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+	margin-top: 0;
+	opacity: 1;
+	-webkit-transition: background-color 300ms, margin-top 500ms, opacity 500ms, -webkit-filter 400ms;
+	transition: background-color 300ms, margin-top 500ms, opacity 500ms, -webkit-filter 400ms;
+	transition: background-color 300ms, filter 400ms, margin-top 500ms, opacity 500ms;
+	transition: background-color 300ms, filter 400ms, margin-top 500ms, opacity 500ms, -webkit-filter 400ms;
+	-webkit-box-shadow: 0 0 12px gray;
+	box-shadow: 0 0 12px gray;
+	background-color: #ffe9bd;
 }
 .question h2 {
 	font-size: 42px;
+}
+.question.answered {
+	-webkit-filter: grayscale(50%);
+	filter: grayscale(50%);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 .question .choice {
 	position: relative;
@@ -20,8 +73,9 @@
 	overflow: hidden;
 	font-size: 30px;
 	border-radius: 7px;
+	min-width: 4em;
 	border: none;
-	background-color: brown;
+	background-color: indianred;
 	cursor: pointer;
 }
 .question .choice div {
@@ -49,7 +103,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: #857ee2;
+	background-color: #655dda;
 	z-index: -1;
 }
 .question .choice div:hover {
@@ -58,4 +112,119 @@
 .question .choice div:hover::before {
 	-webkit-transform: translateX(0);
 	transform: translateX(0);
+}
+
+.blocker {
+	position: absolute;
+	display: grid;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+}
+.blocker span {
+	display: block;
+	font-size: 0;
+	font-family: "Noto Sans JP", sans-serif;
+	font-weight: bold;
+	font-weight: 900;
+	color: honeydew;
+	-webkit-animation: popUp 400ms forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	animation: popUp 400ms forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timer {
+	margin-left: auto;
+}
+
+.progress {
+	display: grid;
+	grid-template-rows: 25px 7px;
+	grid-gap: 2px;
+	gap: 2px;
+}
+.progress .markers {
+	display: grid;
+	-webkit-box-align: end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+	width: 100%;
+	height: 15px;
+}
+.progress .markers .tag {
+	justify-self: end;
+	width: 20px;
+	font-size: 0;
+	color: honeydew;
+}
+.progress .markers .tag::before {
+	font-family: "Noto Sans JP", sans-serif;
+	font-weight: 900;
+	-webkit-animation: popUpSmall 400ms forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	animation: popUpSmall 400ms forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.progress .markers .tag.right::before {
+	content: "✓";
+	color: green;
+}
+.progress .markers .tag.wrong::before {
+	content: "X";
+	color: crimson;
+}
+.progress-bar {
+	position: relative;
+	width: 100%;
+	height: 7px;
+	border-radius: 10px;
+	background-color: purple;
+	margin-bottom: 10%;
+}
+.progress-bar span {
+	position: absolute;
+	height: 100%;
+	border-radius: inherit;
+	display: inline-block;
+	-webkit-transition: width 300ms;
+	transition: width 300ms;
+	width: 0;
+	background-color: aliceblue;
+}
+
+@-webkit-keyframes popUp {
+	from {
+		font-size: 0;
+	}
+	to {
+		font-size: 85px;
+	}
+}
+@keyframes popUp {
+	from {
+		font-size: 0;
+	}
+	to {
+		font-size: 85px;
+	}
+}
+@-webkit-keyframes popUpSmall {
+	from {
+		font-size: 0;
+	}
+	to {
+		font-size: 20px;
+	}
+}
+@keyframes popUpSmall {
+	from {
+		font-size: 0;
+	}
+	to {
+		font-size: 20px;
+	}
 }
