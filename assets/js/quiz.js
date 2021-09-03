@@ -15,8 +15,7 @@ let progressMarkers = document.querySelector('.markers');
 
 let answered = 0;
 
-// TODO: this is pretty useless... get rid of it
-let answeredCorrectly = [];
+let answeredCorrectly = 0;
 
 /**
  * @typedef QuestionShape
@@ -63,7 +62,7 @@ function Question(
 		choice.addEventListener('click', () => {
 			const wasCorrect = i === correct;
 
-			answeredCorrectly[numQuestions - currentIndex] = wasCorrect ? 1 : -1;
+			if (wasCorrect) answeredCorrectly++;
 
 			progressMarkers.children[answered].classList.add(wasCorrect ? 'right' : 'wrong');
 
@@ -96,7 +95,11 @@ function Question(
 			}, 300);
 
 			if (answered === numQuestions) {
-				alert(`You finished the quiz with a score of ${answeredCorrectly}`);
+				setTimeout(() => {
+					alert(
+						`You finished the quiz with a score of ${answeredCorrectly} out of ${numQuestions}`
+					);
+				}, 500);
 			}
 		});
 
@@ -113,12 +116,11 @@ fetch('../../sample/sampleQuiz.json')
 
 		progressMarkers.style.gridTemplateColumns = `repeat(${numQuestions}, 1fr)`;
 
-		answeredCorrectly = Array(numQuestions).fill(0);
-		answeredCorrectly.forEach(() => {
+		for (let i = 0; i < numQuestions; i++) {
 			progressMarkers.innerHTML += /*html*/ `
 				<span class='tag'></span>
 			`;
-		});
+		}
 
 		sampleQuiz.reverse().forEach((question, i) => {
 			root.appendChild(Question(question, i, numQuestions));
