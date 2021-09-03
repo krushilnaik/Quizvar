@@ -1,16 +1,32 @@
 /**
- * The mount points for each JavJS-driven part of the UI
+ * The mount points for each JS-driven part of the UI
  * @type {HTMLElement[]}
  */
 let [root, progressBar, progressMarkers, timer] = [
 	document.querySelector('.wrapper'),
 	document.querySelector('.progress-bar span'),
 	document.querySelector('.markers'),
-	document.createElement('div')
+	document.querySelector('.timer'),
+	document.querySelector('.pulse')
 ];
 
 let answered = 0;
 let answeredCorrectly = 0;
+let timeRemaining = 61;
+let timerRef;
+
+function updateTimer(time = 1) {
+	timeRemaining -= time;
+	timer.innerHTML = timeRemaining.toString();
+}
+
+timerRef = setInterval(() => {
+	updateTimer();
+
+	if (Math.max(0, timeRemaining) === 0) {
+		clearInterval(timerRef);
+	}
+}, 1000);
 
 /**
  * Generate the HTML for each question
@@ -26,7 +42,9 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	let question = document.createElement('div');
 	question.className = 'question';
 
-	const offset = (numQuestions - currentIndex - 1) * 10;
+	// how many pixels forward to bring each card (up and left)
+	// this is entirely for aesthetic (depth perception)
+	const offset = (numQuestions - currentIndex - 1) * 7;
 
 	const margin = `-${offset}px`;
 
@@ -52,10 +70,26 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 
 		button.querySelector('span').textContent = choice;
 
+		/**
+		 * The main functionality of the quiz
+		 * The user clicks one of the choices
+		 * the "game" responds accordingly:
+		 *
+		 * 1) If they were right, play a neat animation
+		 * 2) If they were wrong... also play a neat animation
+		 * 	but also shave 5 secconds off the timer as penalty
+		 */
 		button.addEventListener('click', () => {
 			const wasCorrect = i === correct;
 
-			if (wasCorrect) answeredCorrectly++;
+			if (wasCorrect) {
+				// if they got it right, yay!
+				answeredCorrectly++;
+			} else {
+				// if not, make it known and drop 5 seconds
+				pulse.animate([{ width: '150%', height: '150%', opacity: 0 }], options);
+				updateTimer(5);
+			}
 
 			progressMarkers.children[answered].classList.add(wasCorrect ? 'right' : 'wrong');
 
@@ -89,6 +123,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 
 			if (answered === numQuestions) {
 				setTimeout(() => {
+					clearInterval(timerRef);
 					alert(
 						`You finished the quiz with a score of ${answeredCorrectly} out of ${numQuestions}`
 					);
@@ -102,6 +137,9 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	return question;
 }
 
+/**
+ * Get the questions from sampleQuiz.json and build the quiz
+ */
 fetch('../../sample/sampleQuiz.json')
 	.then((response) => response.json())
 	.then((sampleQuiz) => {

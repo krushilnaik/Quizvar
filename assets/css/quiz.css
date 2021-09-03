@@ -140,10 +140,6 @@ main .wrapper {
 	animation: popUp 400ms forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.timer {
-	margin-left: auto;
-}
-
 .progress {
 	display: grid;
 	grid-template-rows: 25px 7px;
@@ -183,7 +179,7 @@ main .wrapper {
 	width: 100%;
 	height: 7px;
 	border-radius: 10px;
-	background-color: purple;
+	background-color: dodgerblue;
 	margin-bottom: 10%;
 }
 .progress-bar span {
@@ -195,6 +191,68 @@ main .wrapper {
 	transition: width 300ms;
 	width: 0;
 	background-color: aliceblue;
+}
+
+.timer-wrapper {
+	position: relative;
+	display: grid;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	justify-items: center;
+	background-color: darkcyan;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+}
+.timer-wrapper::before {
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 15px;
+	background-color: inherit;
+	top: -8px;
+}
+.timer-wrapper * {
+	grid-column: 1;
+	grid-row: 1;
+}
+.timer-wrapper .pulse {
+	position: absolute;
+	background-color: red;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.timer-wrapper .timer {
+	display: grid;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: bisque;
+	-webkit-box-shadow: inset 0 0 5px black;
+	box-shadow: inset 0 0 5px black;
+	width: 60px;
+	height: 60px;
+	font-size: 27px;
+	z-index: 5;
+}
+.timer-wrapper .timer::before {
+	/**/
+}
+.timer-wrapper .timer ::after {
+	/**/
+}
+
+.simulate-pulse {
+	position: absolute;
+	right: 2.25%;
+	top: 25%;
+	padding: 15px;
 }
 
 @-webkit-keyframes popUp {
