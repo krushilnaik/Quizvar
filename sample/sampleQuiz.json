@@ -26,10 +26,10 @@
 	{
 		"title": "How do you write \"(3) viruses found!!!\" in an alert box?",
 		"choices": [
-			"alertUser(\"(3) viruses found!!!)!\");",
+			"alertUser(\"(3) viruses found!!!\");",
 			"document.alert(\"(3) viruses found!!!\");",
-			"alert(\"(3) viruses found!!!)!\");",
-			"alert.log(\"(3) viruses found!!!)!\");"
+			"alert(\"(3) viruses found!!!\");",
+			"alert.log(\"(3) viruses found!!!\");"
 		],
 		"correct": 2
 	},
