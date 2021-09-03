@@ -33,8 +33,13 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	question.style.marginTop = margin;
 	question.style.marginLeft = margin;
 
-	question.innerHTML = `<h2></h2>`;
-	question.querySelector('h2').textContent = title;
+	title.split('\n').forEach((part) => {
+		let qPart = document.createElement('h2');
+
+		qPart.textContent = part;
+
+		question.appendChild(qPart);
+	});
 
 	choices.forEach((choice, i) => {
 		let button = document.createElement('button');
