@@ -1,34 +1,46 @@
 [
 	{
-		"title": "This is a question",
-		"choiceA": "This is the first choice",
-		"choiceB": "Choice 2",
-		"choiceC": "C",
-		"choiceD": "None of the above",
+		"title": "Inside which HTML element do we put JavaScript?",
+		"choices": ["<javascript>", "<script>", "<js>", "<source>"],
+		"correct": 1
+	},
+	{
+		"title": "How do you change the content of the HTML element below?\n<p id=\"demo\">This is a demonstration.</p>",
+		"choices": [
+			"document.getElement(\"p\").innerHTML = \"Hello World!\";",
+			"document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
+			"document.getElementByName(\"p\").innerHTML = \"Hello World!\";",
+			"#demo.innerHTML = \"Hello World!\";"
+		],
+		"correct": 1
+	},
+	{
+		"title": "What is the correct syntax for referring to an external script called \"script.js\"?",
+		"choices": [
+			"<script href=\"script.js\">",
+			"<script src=\"script.js\">",
+			"<script file=\"script.js\">"
+		],
+		"correct": 1
+	},
+	{
+		"title": "How do you write \"(3) viruses found!!!)\" in an alert box?",
+		"choices": [
+			"alertUser(\"(3) viruses found!!!)!\");",
+			"document.alert(\"(3) viruses found!!!)!\");",
+			"alert(\"(3) viruses found!!!)!\");",
+			"alert.log(\"(3) viruses found!!!)!\");"
+		],
 		"correct": 2
 	},
 	{
-		"title": "This is another question",
-		"choiceA": "More choice",
-		"choiceB": "Very quiz",
-		"choiceC": "This isn't the answer",
-		"choiceD": "Yes",
-		"correct": 3
-	},
-	{
-		"title": "Question numero three",
-		"choiceA": "one",
-		"choiceB": "dos",
-		"choiceC": "drei",
-		"choiceD": "yon",
-		"correct": 0
-	},
-	{
-		"title": "Final question",
-		"choiceA": "Yes",
-		"choiceB": "No",
-		"choiceC": "Maybe",
-		"choiceD": "How is this multiple choice",
+		"title": "How do you create a JavaScript function?",
+		"choices": [
+			"function = myFunction()",
+			"function myFunction()",
+			"myFunction = new Function()",
+			"function:myFunction()"
+		],
 		"correct": 1
 	}
 ]

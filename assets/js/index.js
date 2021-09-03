@@ -5,6 +5,16 @@
 let startButton = document.querySelector('.start-button');
 let [openTag, closeTag] = startButton.querySelectorAll('span');
 
+function fadeIn() {
+	openTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
+	closeTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
+}
+
+function fadeOut() {
+	openTag.animate([{ opacity: 0, transform: 'translateX(-50%)' }], buttonOptions);
+	closeTag.animate([{ opacity: 0, transform: 'translateX(50%)' }], buttonOptions);
+}
+
 /**
  * Dummy element that expands and shrinks the emulate a background animation
  * @type {HTMLDivElement}
@@ -30,8 +40,7 @@ const backgroundOptions = {
 
 // fade it in
 startButton.addEventListener('mouseover', () => {
-	openTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
-	closeTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
+	fadeIn();
 
 	background.animate(
 		[{ borderRadius: '0', width: '100vw', height: '100vh' }],
@@ -41,11 +50,17 @@ startButton.addEventListener('mouseover', () => {
 
 // fade it out
 startButton.addEventListener('mouseleave', () => {
-	openTag.animate([{ opacity: 0, transform: 'translateX(-50%)' }], buttonOptions);
-	closeTag.animate([{ opacity: 0, transform: 'translateX(50%)' }], buttonOptions);
+	fadeOut();
 
 	background.animate(
 		[{ borderRadius: '50%', width: '0', height: '0' }],
 		backgroundOptions
 	);
 });
+
+(() => {
+	fadeIn();
+	setTimeout(() => {
+		fadeOut();
+	}, 400);
+})();
