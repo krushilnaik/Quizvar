@@ -51,7 +51,13 @@ function SubmissionForm() {
 	 */
 	const onClick = (event) => {
 		event.preventDefault();
-		console.log(event);
+
+		let temp = JSON.parse(localStorage.getItem('quizvar-scores'));
+		const initials = document.getElementById('initials').innerText.trim();
+
+		temp.push({ initials, score: answeredCorrectly });
+
+		localStorage.setItem('quizvar-scores', JSON.stringify(temp));
 	};
 
 	form.innerHTML = /*html*/ `
@@ -116,7 +122,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 		/**
 		 * The main functionality of the quiz
 		 * The user clicks one of the choices
-		 * the "game" responds accordingly:
+		 * The "game" responds accordingly:
 		 *
 		 * 1) If they were right, play a neat animation
 		 * 2) If they were wrong... also play a neat animation
@@ -131,7 +137,6 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 			} else {
 				// if not, make it known and drop 5 seconds
 				pulseTimer();
-
 				updateTimer(5);
 			}
 

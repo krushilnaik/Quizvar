@@ -15,11 +15,18 @@
 		<noscript>JavaScript needs to be enabled to use this application</noscript>
 
 		<header>
-			<a href="leaderboard.html">View high scores</a>
+			<a href="/">Quizvar</a>
 		</header>
 
 		<main>
-			<div>This is where you compare yourself to others</div>
+			<h1>Highscores</h1>
+			<div id="scores"></div>
+			<div id="buttons">
+				<button id="go-back">
+					<a href="index.html">Go Back</a>
+				</button>
+				<button id="clear" onclick="clearScores();">Clear Highscores</button>
+			</div>
 		</main>
 
 		<script src="assets/js/leaderboard.js"></script>
