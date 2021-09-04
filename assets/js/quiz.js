@@ -2,10 +2,9 @@
  * The mount points for each JS-driven part of the UI
  * @type {HTMLElement[]}
  */
-let [root, progressBar, progressMarkers, timer] = [
+let [root, progressBar, timer, pulse] = [
 	document.querySelector('.wrapper'),
 	document.querySelector('.progress-bar span'),
-	document.querySelector('.markers'),
 	document.querySelector('.timer'),
 	document.querySelector('.pulse')
 ];
@@ -91,8 +90,6 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 				updateTimer(5);
 			}
 
-			progressMarkers.children[answered].classList.add(wasCorrect ? 'right' : 'wrong');
-
 			question.style.backgroundColor = wasCorrect ? 'mediumseagreen' : 'salmon';
 
 			answered++;
@@ -144,14 +141,6 @@ fetch('../../sample/sampleQuiz.json')
 	.then((response) => response.json())
 	.then((sampleQuiz) => {
 		const numQuestions = sampleQuiz.length;
-
-		progressMarkers.style.gridTemplateColumns = `repeat(${numQuestions}, 1fr)`;
-
-		for (let i = 0; i < numQuestions; i++) {
-			progressMarkers.innerHTML += /*html*/ `
-				<span class='tag'></span>
-			`;
-		}
 
 		sampleQuiz.reverse().forEach((question, i) => {
 			root.appendChild(Question(question, i, numQuestions));
