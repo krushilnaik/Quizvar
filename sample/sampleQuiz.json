@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Inside which HTML element do we put JavaScript?",
+		"title": "Inside which HTML tag do we put JavaScript?",
 		"choices": ["<javascript>", "<script>", "<js>", "<source>"],
 		"correct": 1
 	},

@@ -17,6 +17,20 @@ let timerRef;
 function updateTimer(time = 1) {
 	timeRemaining -= time;
 	timer.innerHTML = timeRemaining.toString();
+
+	if (timeRemaining <= 5) {
+		pulseTimer();
+	}
+}
+
+function pulseTimer() {
+	timer.animate([{}, { color: 'crimson', fontSize: '40px' }, {}], {
+		duration: 400
+	});
+
+	pulse.animate([{ width: '150%', height: '150%', opacity: 0 }], {
+		duration: 400
+	});
 }
 
 timerRef = setInterval(() => {
@@ -26,6 +40,36 @@ timerRef = setInterval(() => {
 		clearInterval(timerRef);
 	}
 }, 1000);
+
+function SubmissionForm() {
+	let form = document.createElement('div');
+	form.className = 'card';
+
+	/**
+	 * Record player's score in LocalStorage
+	 * @param {Event} event
+	 */
+	const onClick = (event) => {
+		event.preventDefault();
+		console.log(event);
+	};
+
+	form.innerHTML = /*html*/ `
+		<span class='score-report'>You scored ${answeredCorrectly} out of ${answered}!</span>
+		<form action="">
+			<input type="text" name="initials" id="initials">
+			<button type="submit" class='pill'>
+				<div>
+					<span>Submit</span>
+				</div>
+			</button>
+		</form>
+	`;
+
+	form.querySelector('form').addEventListener('submit', onClick);
+
+	return form;
+}
 
 /**
  * Generate the HTML for each question
@@ -39,7 +83,7 @@ timerRef = setInterval(() => {
  */
 function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	let question = document.createElement('div');
-	question.className = 'question';
+	question.className = 'card question';
 
 	// how many pixels forward to bring each card (up and left)
 	// this is entirely for aesthetic (depth perception)
@@ -60,7 +104,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 
 	choices.forEach((choice, i) => {
 		let button = document.createElement('button');
-		button.className = 'choice';
+		button.className = 'pill choice';
 		button.innerHTML = /*html*/ `
 			<div>
 				<span></span>
@@ -86,7 +130,8 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 				answeredCorrectly++;
 			} else {
 				// if not, make it known and drop 5 seconds
-				pulse.animate([{ width: '150%', height: '150%', opacity: 0 }], options);
+				pulseTimer();
+
 				updateTimer(5);
 			}
 
@@ -104,11 +149,13 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 				</div>
 			`;
 
+			// "drop" the flashcard
 			setTimeout(() => {
 				question.style.marginTop = `500px`;
 				question.style.opacity = '0';
-			}, 200);
+			}, 450);
 
+			// center the remaining cards
 			setTimeout(() => {
 				root.style.top = `${answered * 10}px`;
 				root.style.left = `${answered * 10}px`;
@@ -116,14 +163,16 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 				setTimeout(() => {
 					question.remove();
 				}, 250);
-			}, 300);
+			}, 500);
 
 			if (answered === numQuestions) {
 				setTimeout(() => {
 					clearInterval(timerRef);
-					alert(
-						`You finished the quiz with a score of ${answeredCorrectly} out of ${numQuestions}`
-					);
+
+					root.style.top = '0';
+					root.style.left = '0';
+
+					root.appendChild(SubmissionForm());
 				}, 500);
 			}
 		});
