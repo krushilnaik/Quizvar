@@ -43,7 +43,7 @@ timerRef = setInterval(() => {
 
 function SubmissionForm() {
 	let form = document.createElement('div');
-	form.className = 'card';
+	form.className = 'card form';
 
 	/**
 	 * Record player's score in LocalStorage
@@ -158,6 +158,19 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 			setTimeout(() => {
 				question.style.marginTop = `500px`;
 				question.style.opacity = '0';
+
+				if (answered === numQuestions) {
+					setTimeout(() => {
+						clearInterval(timerRef);
+
+						root.style.top = '0';
+						root.style.left = '0';
+
+						setTimeout(() => {
+							root.appendChild(SubmissionForm());
+						}, 350);
+					}, 500);
+				}
 			}, 450);
 
 			// center the remaining cards
@@ -169,17 +182,6 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 					question.remove();
 				}, 250);
 			}, 500);
-
-			if (answered === numQuestions) {
-				setTimeout(() => {
-					clearInterval(timerRef);
-
-					root.style.top = '0';
-					root.style.left = '0';
-
-					root.appendChild(SubmissionForm());
-				}, 500);
-			}
 		});
 
 		question.appendChild(button);
