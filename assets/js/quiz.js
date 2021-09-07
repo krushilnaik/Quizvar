@@ -1,5 +1,6 @@
 /**
  * The mount points for each JS-driven part of the UI
+ * (basically the entire site because web dev amirite?)
  * @type {HTMLElement[]}
  */
 let [root, progressBar, timer, pulse] = [
@@ -33,6 +34,7 @@ function pulseTimer() {
 	});
 }
 
+// The countdown
 timerRef = setInterval(() => {
 	updateTimer();
 
@@ -53,6 +55,7 @@ function SubmissionForm() {
 		event.preventDefault();
 
 		/**
+		 * Where the player typed their initials
 		 * @type {HTMLInputElement}
 		 */
 		const input = document.querySelector('#initials');
@@ -147,7 +150,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 				// if they got it right, yay!
 				answeredCorrectly++;
 			} else {
-				// if not, make it known and drop 5 seconds
+				// if not, rub it in their face
 				pulseTimer();
 				updateTimer(5);
 			}
@@ -203,7 +206,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 }
 
 /**
- * Get the questions from sampleQuiz.json and build the quiz
+ * Build the quiz
  */
 fetch('assets/json/sampleQuiz.json')
 	.then((response) => response.json())
