@@ -65,6 +65,6 @@ startButton.addEventListener('mouseleave', () => {
 	}, 400);
 
 	if (localStorage.getItem('quizvar-scores') === null) {
-		localStorage.setItem('quizvar-scores', JSON.stringify([]));
+		localStorage.setItem('quizvar-scores', '[]');
 	}
 })();

@@ -52,18 +52,25 @@ function SubmissionForm() {
 	const onClick = (event) => {
 		event.preventDefault();
 
+		/**
+		 * @type {HTMLInputElement}
+		 */
+		const input = document.querySelector('#initials');
+
 		let temp = JSON.parse(localStorage.getItem('quizvar-scores'));
-		const initials = document.getElementById('initials').innerText.trim();
+		const initials = input.value.trim();
 
 		temp.push({ initials, score: answeredCorrectly });
 
 		localStorage.setItem('quizvar-scores', JSON.stringify(temp));
+
+		window.location.replace('leaderboard.html');
 	};
 
 	form.innerHTML = /*html*/ `
 		<span class='score-report'>You scored ${answeredCorrectly} out of ${answered}!</span>
 		<form action="">
-			<input type="text" name="initials" id="initials">
+			<input type="text" name="initials" id="initials" required>
 			<button type="submit" class='pill'>
 				<div>
 					<span>Submit</span>
