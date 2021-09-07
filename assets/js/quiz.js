@@ -198,7 +198,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 /**
  * Get the questions from sampleQuiz.json and build the quiz
  */
-fetch('../../sample/sampleQuiz.json')
+fetch('assets/json/sampleQuiz.json')
 	.then((response) => response.json())
 	.then((sampleQuiz) => {
 		const numQuestions = sampleQuiz.length;
