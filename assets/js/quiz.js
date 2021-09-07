@@ -100,13 +100,12 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	question.style.marginTop = margin;
 	question.style.marginLeft = margin;
 
-	title.split('\n').forEach((part) => {
-		let qPart = document.createElement('h2');
-
-		qPart.textContent = part;
-
-		question.appendChild(qPart);
-	});
+	question.innerHTML += /*html*/ `
+		<h2>
+			<span style="color: cornflowerblue;">Q${answered + 1}:</span>
+			<span style="font-style: italic">${title}</span>
+		</h2>
+	`;
 
 	choices.forEach((choice, i) => {
 		let button = document.createElement('button');
@@ -128,8 +127,14 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 		 * 2) If they were wrong... also play a neat animation
 		 * 	but also shave 5 secconds off the timer as penalty
 		 */
-		button.addEventListener('click', () => {
+		button.addEventListener('click', (event) => {
+			event.preventDefault();
+
 			const wasCorrect = i === correct;
+
+			question
+				.querySelector(`button:nth-child(${correct + 2})`)
+				.classList.add('correct');
 
 			if (wasCorrect) {
 				// if they got it right, yay!

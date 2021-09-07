@@ -20,4 +20,3 @@ localStorage.setItem(
 );
 
 showScores();
-``;

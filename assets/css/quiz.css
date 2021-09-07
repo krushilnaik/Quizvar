@@ -58,6 +58,16 @@ main .wrapper {
 }
 .question h2 {
 	font-size: 32px;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 3%;
+	background-color: #bfd8d9;
+	-webkit-transition: background-color 300ms;
+	transition: background-color 300ms;
+}
+.question button {
+	-webkit-transition: background-color 350ms;
+	transition: background-color 350ms;
 }
 .question.answered {
 	-webkit-filter: grayscale(50%);
@@ -67,14 +77,14 @@ main .wrapper {
 	-ms-user-select: none;
 	user-select: none;
 }
-
-.choice {
-	width: -webkit-fit-content;
-	width: -moz-fit-content;
-	width: fit-content;
-	font-size: 22px;
-	border-radius: 7px;
-	border: none;
+.question.answered h2 {
+	background-color: transparent;
+}
+.question.answered button {
+	background-color: indianred;
+}
+.question.answered button.correct {
+	background-color: #87dd87;
 }
 
 .pill {
@@ -119,6 +129,16 @@ main .wrapper {
 .pill div:hover::before {
 	-webkit-transform: translateX(0);
 	transform: translateX(0);
+}
+
+.choice {
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	font-size: 22px;
+	border-radius: 7px;
+	border: none;
+	background-color: #33ccff;
 }
 
 .blocker {
@@ -222,6 +242,11 @@ main .wrapper {
 	text-align: center;
 }
 
+.form {
+	-webkit-animation: formAnimation 350ms forwards;
+	animation: formAnimation 350ms forwards;
+}
+
 form {
 	position: relative;
 	display: grid;
@@ -319,5 +344,21 @@ form button div {
 	}
 	to {
 		font-size: 85px;
+	}
+}
+@-webkit-keyframes formAnimation {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes formAnimation {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

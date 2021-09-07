@@ -5,13 +5,8 @@
 		"correct": 1
 	},
 	{
-		"title": "How do you change the content of the HTML element below?\n<p id=\"demo\">This is a demonstration.</p>",
-		"choices": [
-			"document.getElement(\"p\").innerHTML = \"Hello World!\";",
-			"document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
-			"document.getElementByName(\"p\").innerHTML = \"Hello World!\";",
-			"#demo.innerHTML = \"Hello World!\";"
-		],
+		"title": "Which of the following applies a provided function to each element of an array, returning the modified array?",
+		"choices": ["concat()", "map()", "forEach()", "every()"],
 		"correct": 1
 	},
 	{
