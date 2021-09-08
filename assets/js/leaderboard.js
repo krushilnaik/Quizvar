@@ -15,6 +15,7 @@ function showScores() {
 	];
 
 	scores
+		.slice(0, 5)
 		.sort((a, b) => (a.score > b.score ? -1 : 1))
 		.forEach((score, i) => {
 			scoresElement.innerHTML += /*html*/ `
