@@ -1,0 +1,142 @@
+main {
+	-ms-flex-line-pack: start;
+	align-content: flex-start;
+}
+
+#scores {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+#scores .card {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	position: relative;
+	height: 90px;
+	padding: 15px;
+	background-color: cornflowerblue;
+}
+#scores .card:nth-child(2) {
+	border-radius: 15px 15px 0 0;
+}
+#scores .card:nth-child(odd) {
+	background-color: #84abf1;
+}
+#scores .card:nth-last-child(1) {
+	border-radius: 0 0 15px 15px;
+}
+#scores .card .badge {
+	display: grid;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	-webkit-box-shadow: 0 0 7px black;
+	box-shadow: 0 0 7px black;
+}
+#scores .card .badge img {
+	height: 50px;
+	opacity: 0.4;
+}
+#scores .card .number {
+	/**/
+}
+
+#buttons {
+	margin-top: 25px;
+}
+
+button {
+	font-size: 36px;
+	border-radius: 10px;
+	border: none;
+	padding: 7px;
+	cursor: pointer;
+	background-color: transparent;
+	color: purple;
+	border: solid 3px;
+	overflow: hidden;
+	-webkit-transition-property: background-color, color;
+	transition-property: background-color, color;
+	-webkit-transition-duration: 450ms;
+	transition-duration: 450ms;
+}
+button::before, button::after {
+	border-radius: inherit;
+	-webkit-transition: left 450ms;
+	transition: left 450ms;
+}
+button#go-back {
+	position: relative;
+}
+button#go-back::after {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: honeydew;
+	z-index: -2;
+}
+button#go-back::before {
+	position: absolute;
+	content: "";
+	background-color: purple;
+	z-index: -1;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100px;
+}
+button#go-back:hover {
+	color: honeydew;
+}
+button#go-back:hover::before {
+	left: 0;
+}
+button#clear {
+	position: relative;
+	color: crimson;
+}
+button#clear::before {
+	position: absolute;
+	content: "";
+	background-color: crimson;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: -100%;
+	z-index: -1;
+}
+button#clear:hover {
+	color: honeydew;
+}
+button#clear:hover::before {
+	left: 0;
+}
+button a {
+	text-decoration: none;
+	color: unset;
+}
