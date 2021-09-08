@@ -5,6 +5,11 @@
 let startButton = document.querySelector('.start-button');
 let [openTag, closeTag] = startButton.querySelectorAll('span');
 
+/**
+ * @type {HTMLAnchorElement}
+ */
+let highScoreLink = document.querySelector('header a');
+
 function fadeIn() {
 	openTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
 	closeTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
@@ -56,6 +61,14 @@ startButton.addEventListener('mouseleave', () => {
 		[{ borderRadius: '50%', width: '0', height: '0' }],
 		backgroundOptions
 	);
+});
+
+highScoreLink.addEventListener('mouseover', function (e) {
+	document.body.style.backgroundColor = 'var(--backgroundColor)';
+});
+
+highScoreLink.addEventListener('mouseleave', function (e) {
+	document.body.style.backgroundColor = 'blanchedalmond';
 });
 
 (() => {
