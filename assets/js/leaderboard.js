@@ -1,5 +1,10 @@
 let scoresElement = document.getElementById('scores');
 
+/**
+ * @type {HTMLAnchorElement}
+ */
+let homeLink = document.querySelector('#go-back');
+
 function showScores() {
 	const scores = JSON.parse(localStorage.getItem('quizvar-scores'));
 
@@ -32,3 +37,11 @@ function clearScores() {
 }
 
 showScores();
+
+homeLink.addEventListener('mouseover', function (e) {
+	document.body.style.backgroundColor = 'blanchedalmond';
+});
+
+homeLink.addEventListener('mouseleave', function (e) {
+	document.body.style.backgroundColor = 'var(--backgroundColor)';
+});
