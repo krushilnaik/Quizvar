@@ -152,7 +152,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 			} else {
 				// if not, rub it in their face
 				pulseTimer();
-				updateTimer(5);
+				updateTimer(10);
 			}
 
 			question.style.backgroundColor = wasCorrect ? 'mediumseagreen' : 'salmon';
