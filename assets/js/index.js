@@ -63,11 +63,11 @@ startButton.addEventListener('mouseleave', () => {
 	);
 });
 
-highScoreLink.addEventListener('mouseover', function (e) {
+highScoreLink.addEventListener('mouseover', function () {
 	document.body.style.backgroundColor = 'var(--backgroundColor)';
 });
 
-highScoreLink.addEventListener('mouseleave', function (e) {
+highScoreLink.addEventListener('mouseleave', function () {
 	document.body.style.backgroundColor = 'blanchedalmond';
 });
 
