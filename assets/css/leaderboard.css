@@ -28,13 +28,15 @@
 	background-color: cornflowerblue;
 }
 #scores .card:nth-child(2) {
-	border-radius: 15px 15px 0 0;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 #scores .card:nth-child(odd) {
 	background-color: #84abf1;
 }
 #scores .card:nth-last-child(1) {
-	border-radius: 0 0 15px 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
 }
 #scores .card .badge {
 	display: grid;
