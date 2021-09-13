@@ -3,18 +3,27 @@
  * @type {HTMLDivElement}
  */
 let startButton = document.querySelector('.start-button');
+
+// The html markers that show up on hover
 let [openTag, closeTag] = startButton.querySelectorAll('span');
 
 /**
+ * Link to the high score page in the top left
  * @type {HTMLAnchorElement}
  */
 let highScoreLink = document.querySelector('header a');
 
+/**
+ * Fade and pull the tags in
+ */
 function fadeIn() {
 	openTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
 	closeTag.animate([{ opacity: 1, transform: 'translateX(0)' }], buttonOptions);
 }
 
+/**
+ * Fade and push the tags out
+ */
 function fadeOut() {
 	openTag.animate([{ opacity: 0, transform: 'translateX(-50%)' }], buttonOptions);
 	closeTag.animate([{ opacity: 0, transform: 'translateX(50%)' }], buttonOptions);
@@ -43,7 +52,6 @@ const backgroundOptions = {
 	fill: 'forwards'
 };
 
-// fade it in
 startButton.addEventListener('mouseover', () => {
 	fadeIn();
 
@@ -53,7 +61,6 @@ startButton.addEventListener('mouseover', () => {
 	);
 });
 
-// fade it out
 startButton.addEventListener('mouseleave', () => {
 	fadeOut();
 
@@ -71,6 +78,7 @@ highScoreLink.addEventListener('mouseleave', function () {
 	document.body.style.backgroundColor = 'blanchedalmond';
 });
 
+// Run this code on page load
 (() => {
 	fadeIn();
 	setTimeout(() => {

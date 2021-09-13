@@ -6,6 +6,9 @@ let scoresElement = document.getElementById('scores');
 let homeLink = document.querySelector('#go-back');
 
 function showScores() {
+	/**
+	 * @type {{score: number, initials: string}[]}
+	 */
 	const scores = JSON.parse(localStorage.getItem('quizvar-scores'));
 
 	const gradients = [
@@ -20,8 +23,8 @@ function showScores() {
 		.forEach((score, i) => {
 			scoresElement.innerHTML += /*html*/ `
 				<div class="card">
-					<div class="badge" style="background: ${
-						i < gradients.length ? gradients[i] : 'transparent'
+					<div class="badge" style="${
+						i < gradients.length ? `background: ${gradients[i]}` : 'opacity: 0'
 					}">
 						<img src="assets/images/star.png" alt="star">
 					</div>
