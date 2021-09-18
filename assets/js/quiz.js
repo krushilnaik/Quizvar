@@ -16,6 +16,12 @@ let timeRemaining = 61;
 let timerRef;
 
 function updateTimer(time = 1) {
+	if (timeRemaining <= time) {
+		clearInterval(timerRef);
+
+		root.replaceChildren(SubmissionForm());
+	}
+
 	timeRemaining -= time;
 	timer.innerHTML = timeRemaining.toString();
 
@@ -101,8 +107,10 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 	let question = document.createElement('div');
 	question.className = 'card question';
 
-	// how many pixels forward to bring each card (up and left)
-	// this is entirely for aesthetic (depth perception)
+	/**
+	 * how many pixels forward to bring each card (top and left)
+	 * this is entirely for aesthetic (depth perception)
+	 */
 	const offset = (numQuestions - currentIndex - 1) * 7;
 
 	const margin = `-${offset}px`;
