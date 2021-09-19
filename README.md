@@ -7,3 +7,10 @@
 </p>
 
 The fourth assignment for the Rutgers coding bootcamp: build a quiz game about JavaScript.
+
+The user clicks one of the choices
+
+1. If they were right, play a neat animation
+2. If they were wrong... also play a neat animation, but shave 10 secconds off the timer as well
+
+![Demo GIF](./demos/demo.gif)

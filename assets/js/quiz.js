@@ -143,7 +143,7 @@ function Question({ title, choices, correct }, currentIndex, numQuestions) {
 		 *
 		 * 1) If they were right, play a neat animation
 		 * 2) If they were wrong... also play a neat animation
-		 * 	but also shave 5 secconds off the timer as penalty
+		 * 	but also shave 10 secconds off the timer as penalty
 		 */
 		button.addEventListener('click', (event) => {
 			event.preventDefault();
