@@ -17,6 +17,14 @@ function showScores() {
 		'linear-gradient(-45deg, chocolate, lightsalmon)'
 	];
 
+	if (!scores.length) {
+		scoresElement.innerHTML += /*html*/ `
+			<h5 style='text-align: center;'>No scores yet!</h5>
+		`;
+
+		return;
+	}
+
 	scores
 		.slice(0, 5)
 		.sort((a, b) => (a.score > b.score ? -1 : 1))
@@ -37,15 +45,15 @@ function showScores() {
 
 function clearScores() {
 	localStorage.setItem('quizvar-scores', '[]');
-	scoresElement.innerHTML = '';
+	showScores();
 }
 
 showScores();
 
-homeLink.addEventListener('mouseover', function (e) {
+homeLink.addEventListener('mouseover', function () {
 	document.body.style.backgroundColor = 'blanchedalmond';
 });
 
-homeLink.addEventListener('mouseleave', function (e) {
+homeLink.addEventListener('mouseleave', function () {
 	document.body.style.backgroundColor = 'var(--backgroundColor)';
 });
