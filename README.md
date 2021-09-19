@@ -1,10 +1,10 @@
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [QuizVar](#quizvar)
+- [About](#about)
 - [Possible improvements](#possible-improvements)
 
-# QuizVar
+# About
 
 The fourth assignment for the Rutgers coding bootcamp: build a quiz game about JavaScript.
 
@@ -23,4 +23,5 @@ The user clicks one of the choices
 
 # Possible improvements
 
-The red flash on the timer when the user gets a question wrong isn't very noticable. The whole component could probably be improved upon using a frontend framework with some SVGs sprinkled in. But I don't know SVGs (yet 👀)
+-  The red flash on the timer when the user gets a question wrong isn't very noticable. The whole component could probably be improved upon using a frontend framework with some SVGs sprinkled in. But I don't know SVGs (yet 👀)
+-  The leader board could be styled better
